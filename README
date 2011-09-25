@@ -1,0 +1,20 @@
+== 概要
+
+Google+ APIのデモアプリです。
+OAuth 2.0のアクセストークンを使ってユーザの公開ストリームを取得します。
+
+
+== 使い方
+
+1. config/initializers/constants.rb にて必要な定数を設定する
+
+  USER_ID      : 公開ストリームを取得したいユーザのユーザID
+  CLIENT_ID    : 登録したクライアントID
+  CLIENT_SECRET: 登録したクライアントシークレット
+
+2. サーバを起動する
+  rails s
+
+3. http://localhost:3000/ にアクセスする
+
+4. 「Get People」リンクをクリックする
