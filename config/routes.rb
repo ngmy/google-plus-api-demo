@@ -1,6 +1,6 @@
 GooglePlusApiDemo::Application.routes.draw do
   resources :tops
-  resources :people do
+  resources :activities do
     get :oauth2callback, :on => :collection
   end
 

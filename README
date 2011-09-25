@@ -13,7 +13,6 @@ OAuth 2.0のアクセストークンを使ってユーザの公開ストリー�
 
 1. config/initializers/constants.rb にて必要な定数を設定する
 
-  USER_ID      : 公開ストリームを取得したいユーザのユーザID
   CLIENT_ID    : 登録したクライアントID
   CLIENT_SECRET: 登録したクライアントシークレット
 
@@ -25,4 +24,4 @@ OAuth 2.0のアクセストークンを使ってユーザの公開ストリー�
 
 3. http://localhost:3000/ にアクセスする
 
-4. 「Get People」リンクをクリックする
+4. 「Get Activities」リンクをクリックする

@@ -1,0 +1,23 @@
+<h1>Listing activities</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Published</th>
+    <th>URL</th>
+  </tr>
+
+<% if @activities.present? && @activities["items"].present? %>
+  <% @activities["items"].each do |activity| %>
+    <tr>
+      <td><%= activity["title"] %></td>
+      <td><%= activity["published"] %></td>
+      <td><%= activity["url"] %></td>
+    </tr>
+  <% end %>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Activity', new_activity_path %>

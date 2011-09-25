@@ -1,6 +1,5 @@
-USER_ID = ""
 CLIENT_ID = ""
 CLIENT_SECRET = ""
-REDIRECT_URI = "http://localhost:3000/people/oauth2callback"
+REDIRECT_URI = "http://localhost:3000/activities/oauth2callback"
 SCOPE = "https://www.googleapis.com/auth/plus.me"
 RESPONSE_TYPE = "code"

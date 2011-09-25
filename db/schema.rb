@@ -11,9 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110923164447) do
+ActiveRecord::Schema.define(:version => 20110925162148) do
 
-  create_table "people", :force => true do |t|
+  create_table "activities", :force => true do |t|
     t.string   "access_token"
     t.datetime "created_at"
     t.datetime "updated_at"

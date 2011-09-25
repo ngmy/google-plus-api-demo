@@ -1,8 +1,8 @@
 require 'net/https'
 
-class PeopleController < ApplicationController
-  # GET /people
-  # GET /people.json
+class ActivitiesController < ApplicationController
+  # GET /activities
+  # GET /activities.json
   def index
     # アクセストークン未取得または有効期限切れの場合はOAuth 2.0で認証する
     redirect_to "https://accounts.google.com/o/oauth2/auth?"\
@@ -12,7 +12,7 @@ class PeopleController < ApplicationController
       "response_type=#{RESPONSE_TYPE}" and return if cookies[:access_token].blank?
 
     # 公開ストリームを取得する
-    uri = URI.parse("https://www.googleapis.com/plus/v1/people/#{USER_ID}/activities/public?"\
+    uri = URI.parse("https://www.googleapis.com/plus/v1/people/me/activities/public?"\
       "access_token=#{cookies[:access_token]}")
     https = Net::HTTP.new(uri.host, 443)
     https.use_ssl = true
@@ -22,76 +22,76 @@ class PeopleController < ApplicationController
       https.request(request)
     end
 
-    @people = ActiveSupport::JSON.decode(response.body)
+    @activities = ActiveSupport::JSON.decode(response.body)
   end
 
-  # GET /people/1
-  # GET /people/1.json
+  # GET /activities/1
+  # GET /activities/1.json
   def show
-    @person = Person.find(params[:id])
+    @activity = Activity.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @person }
+      format.json { render json: @activity }
     end
   end
 
-  # GET /people/new
-  # GET /people/new.json
+  # GET /activities/new
+  # GET /activities/new.json
   def new
-    @person = Person.new
+    @activity = Activity.new
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @person }
+      format.json { render json: @activity }
     end
   end
 
-  # GET /people/1/edit
+  # GET /activities/1/edit
   def edit
-    @person = Person.find(params[:id])
+    @activity = Activity.find(params[:id])
   end
 
-  # POST /people
-  # POST /people.json
+  # POST /activities
+  # POST /activities.json
   def create
-    @person = Person.new(params[:person])
+    @activity = Activity.new(params[:activity])
 
     respond_to do |format|
-      if @person.save
-        format.html { redirect_to @person, notice: 'Person was successfully created.' }
-        format.json { render json: @person, status: :created, location: @person }
+      if @activity.save
+        format.html { redirect_to @activity, notice: 'Activity was successfully created.' }
+        format.json { render json: @activity, status: :created, location: @activity }
       else
         format.html { render action: "new" }
-        format.json { render json: @person.errors, status: :unprocessable_entity }
+        format.json { render json: @activity.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PUT /people/1
-  # PUT /people/1.json
+  # PUT /activities/1
+  # PUT /activities/1.json
   def update
-    @person = Person.find(params[:id])
+    @activity = Activity.find(params[:id])
 
     respond_to do |format|
-      if @person.update_attributes(params[:person])
-        format.html { redirect_to @person, notice: 'Person was successfully updated.' }
+      if @activity.update_attributes(params[:activity])
+        format.html { redirect_to @activity, notice: 'Activity was successfully updated.' }
         format.json { head :ok }
       else
         format.html { render action: "edit" }
-        format.json { render json: @person.errors, status: :unprocessable_entity }
+        format.json { render json: @activity.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /people/1
-  # DELETE /people/1.json
+  # DELETE /activities/1
+  # DELETE /activities/1.json
   def destroy
-    @person = Person.find(params[:id])
-    @person.destroy
+    @activity = Activity.find(params[:id])
+    @activity.destroy
 
     respond_to do |format|
-      format.html { redirect_to people_url }
+      format.html { redirect_to activities_url }
       format.json { head :ok }
     end
   end
@@ -122,9 +122,9 @@ class PeopleController < ApplicationController
       :value => response_hash["access_token"],
       :expires => response_hash["expires_in"].seconds.from_now
     }
-    @person = Person.new(:access_token => response_hash["access_token"])
-    @person.save
+    @activity = Activity.new(:access_token => response_hash["access_token"])
+    @activity.save
 
-    redirect_to url_for(:people)
+    redirect_to url_for(:activities)
   end
 end
