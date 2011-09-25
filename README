@@ -4,6 +4,11 @@ Google+ APIのデモアプリです。
 OAuth 2.0のアクセストークンを使ってユーザの公開ストリームを取得します。
 
 
+== 動作環境
+* Ruby 1.9.2
+* Rails 3.1.0
+
+
 == 使い方
 
 1. config/initializers/constants.rb にて必要な定数を設定する
@@ -11,6 +16,9 @@ OAuth 2.0のアクセストークンを使ってユーザの公開ストリー�
   USER_ID      : 公開ストリームを取得したいユーザのユーザID
   CLIENT_ID    : 登録したクライアントID
   CLIENT_SECRET: 登録したクライアントシークレット
+
+2. テーブルを作成する
+  rake db:migrate
 
 2. サーバを起動する
   rails s
