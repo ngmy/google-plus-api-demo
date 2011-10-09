@@ -5,6 +5,7 @@ OAuth 2.0のアクセストークンを使ってユーザの公開ストリー�
 
 
 == 動作環境
+
 * Ruby 1.9.2
 * Rails 3.1.0
 
@@ -19,9 +20,9 @@ OAuth 2.0のアクセストークンを使ってユーザの公開ストリー�
 2. テーブルを作成する
   rake db:migrate
 
-2. サーバを起動する
+3. サーバを起動する
   rails s
 
-3. http://localhost:3000/ にアクセスする
+4. http://localhost:3000/ にアクセスする
 
-4. 「Get Activities」リンクをクリックする
+5. 「Get Activities」リンクをクリックする
